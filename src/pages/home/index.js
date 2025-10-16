@@ -1,0 +1,1 @@
+export { default as homePage } from "./ui/homePage.vue";
