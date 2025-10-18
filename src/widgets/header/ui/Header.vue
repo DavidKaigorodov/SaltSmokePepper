@@ -1,0 +1,133 @@
+<script>
+import Link from "@/shared/ui/links/Link.vue";
+import Logo from "@/shared/ui/icons/logo/Logo.vue";
+import CartIco from "@/shared/ui/icons/cartIco/cartIco.vue";
+
+export default {
+  name: "Header",
+  components: {
+    Link,
+    Logo,
+    CartIco,
+  },
+  data() {
+    return {
+      menu: [
+        { label: "Главная", href: "/home" },
+        { label: "Доставка", href: "/delivery" },
+        { label: "Отзывы", href: "/reviews" },
+        { label: "Каталог", href: "/catalog" },
+        { label: "Новости и акции", href: "/news" },
+        { label: "О нас", href: "/about" },
+      ],
+    };
+  },
+  computed: {
+    cartCount() {
+      return 0;
+    },
+  },
+};
+</script>
+
+<template>
+  <header class="header">
+    <div class="container">
+      <div class="left-menu">
+        <div class="header__logo">
+          <Link href="/home">
+            <Logo />
+          </Link>
+        </div>
+
+        <nav class="menu">
+          <div v-for="item in menu" :key="item.href">
+            <Link :href="item.href" :label="item.label" />
+          </div>
+        </nav>
+      </div>
+
+      <div class="right-actions">
+        <div class="auth-links">
+          <Link href="/login" label="Войти" class="auth-link" />
+          <Link href="/register" label="Регистрация" class="auth-link" />
+        </div>
+        <div class="cart-wrapper">
+          <Link href="/cart" class="cart-link">
+            <template #ico>
+              <CartIco />
+            </template>
+            <span class="cart-count">{{ cartCount }}</span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+
+<style lang="sass">
+.header
+  position: fixed
+  top: 0
+  left: 0
+  height: 60px
+  width: 100%
+  z-index: 100
+  padding-right: 17px
+  box-sizing: border-box
+
+  .container
+    display: flex
+    height: 100%
+    justify-content: space-between
+    align-items: center
+    background: rgba(0, 0, 0, 0.3)
+    backdrop-filter: blur(3px)
+    padding: 0 100px 
+
+    .left-menu
+      display: flex
+      align-items: center
+      gap: 20px
+
+      .menu
+        display: flex
+        align-items: center
+        gap: 20px
+
+    .right-actions
+      display: flex
+      align-items: center
+      gap: 20px
+
+      .auth-links
+        display: flex
+        gap: 20px 
+
+      .cart-wrapper
+        .cart-link
+          display: flex
+          align-items: center
+          background: var(--text-color-hover)
+          border-radius: 34px
+          padding: 4px 10px  
+          gap: 8px
+
+          &:hover,
+          &:focus
+            color: var(--text-color)
+
+          .cart-icon
+            font-size: 18px 
+
+          .cart-count
+            display: inline-block
+            background: var(--text-color)
+            color: var(--text-color-dark)
+            border-radius: 12px
+            min-width: 20px  
+            height: 20px  
+            line-height: 20px  
+            text-align: center
+            font-size: 10px  
+</style>
