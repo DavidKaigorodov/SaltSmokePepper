@@ -1,6 +1,5 @@
 <script>
 export default {
-  name: "ImageCard",
   props: {
     src: { type: String, required: true },
     alt: { type: String, default: "" },
