@@ -12,9 +12,9 @@ export default {
 </script>
 
 <template>
-  <div class="promo-info-card" :class="`promo-info-card--${size}`">
-    <h3 class="promo-info-card__title">{{ title }}</h3>
-    <p v-if="text" class="promo-info-card__text">{{ text }}</p>
+  <div class="info-card" :class="`info-card--${size}`">
+    <h3 class="info-card__title">{{ title }}</h3>
+    <p v-if="text" class="info-card__text">{{ text }}</p>
   </div>
 </template>
 
