@@ -1,7 +1,7 @@
 <script>
 import Link from "@/shared/ui/links/Link.vue";
 import Logo from "@/shared/ui/icons/logo/Logo.vue";
-import CartIco from "@/shared/ui/icons/cartIco/cartIco.vue";
+import CartIco from "@/shared/ui/icons/cartIco/CartIco.vue";
 
 export default {
   name: "Header",
@@ -34,7 +34,7 @@ export default {
   <header class="header">
     <div class="container">
       <div class="left-menu">
-        <div class="header__logo">
+        <div class="header_logo">
           <Link href="/home">
             <Logo />
           </Link>

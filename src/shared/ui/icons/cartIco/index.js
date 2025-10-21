@@ -1,1 +1,1 @@
-export {default as CartIco} from './CartIco.vue'
+export {default as CartIco} from "./CartIco.vue"

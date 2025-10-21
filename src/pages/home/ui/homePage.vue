@@ -1,20 +1,17 @@
 <script>
 import BaseLayout from "@/app/layouts/BaseLayout.vue";
+import { PromoSection } from "@/widgets/PromoSection";
 
 export default {
   components: {
     BaseLayout,
+    PromoSection,
   },
 };
 </script>
 <template>
   <BaseLayout>
-    <div class="ggg">213</div>
-    <!-- <p>Привет мир!</p> -->
+    <PromoSection />
   </BaseLayout>
 </template>
-<style lang="sass">
-.ggg
-    width: 100%
-    height: 100vh
-</style>
+<style lang="sass"></style>
