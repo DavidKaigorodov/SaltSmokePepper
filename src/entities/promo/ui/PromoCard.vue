@@ -26,27 +26,22 @@ export default {
 
 <style lang="sass" scoped>
 .promo-card
-    position: relative
-    width: 100%
-    height: 100%
-    transition: transform 0.3s ease
-    cursor: pointer
+  position: relative
+  width: 100%
+  height: 100%
+  cursor: pointer
+  transition: transform 0.3s ease
+  border-radius: 12px
+  overflow: hidden
 
-    &:hover
-      transform: scale(1.02)
+  &:hover
+    transform: scale(1.02)
 
-    &--small
-      grid-column: span 3
-      grid-row: span 3
-      aspect-ratio: 1 / 1
+  &--large
+    grid-column: span 2
+    grid-row: span 2
 
-    &--medium
-      grid-column: span 3
-      grid-row: span 2
-      aspect-ratio: 4 / 3
-
-    &--large
-      grid-column: span 6
-      grid-row: span 6
-      aspect-ratio: 16 / 9
+  &--small
+    grid-column: span 1
+    grid-row: span 1
 </style>

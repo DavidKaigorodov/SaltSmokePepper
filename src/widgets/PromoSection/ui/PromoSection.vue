@@ -28,15 +28,13 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-.promo-section
-  padding-top: 60px
-
 .promo-grid
   display: grid
-  grid-template-columns: repeat(12, 1fr)
-  grid-auto-rows: 60px
-  gap: 20px
+  grid-template-columns: repeat(4, 1fr)
+  grid-auto-rows: 240px
+  gap: 16px
   width: 100%
+  padding: 16px
 
 .centered-button
   display: block

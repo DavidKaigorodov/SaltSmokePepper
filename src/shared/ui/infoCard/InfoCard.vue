@@ -19,50 +19,34 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-.promo-info-card
-    position: absolute
-    width: 280px
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: flex-start
-    text-align: left
-    backdrop-filter: blur(10px)
-    background: rgba(0, 0, 0, 0.5)
-    border: 1px solid var(--text-color)
-    border-radius: 20px
-    color: var(--text-color)
-    padding: 8px 12px
-    transition: all 0.3s ease
+.info-card
+  position: absolute
+  left: 0
+  right: 0
+  display: flex
+  flex-direction: column
+  max-width: calc(100% - 40px)
+  margin: 0 20px 20px 20px
+  backdrop-filter: blur(8px)
+  background: rgba(0, 0, 0, 0.45)
+  padding: 10px
+  border-radius: 16px
+  border: 1px solid rgba(255, 255, 255, 0.2)
+  color: var(--text-color)
+  pointer-events: none
+  transition: opacity 0.3s ease
+  z-index: 3
 
-    &--large,
-    &--medium,
-    &--tall
-        bottom: 20px
-        left: 20px
-        transform: none   
+  &__title
+    color: var(--text-color-hover)
+    font-weight: 700
+    font-size: clamp(0.9rem, 1.1vw, 1.2rem)
+    margin-bottom: 0.25rem
+    line-height: 1.2
 
-    &--small
-        bottom: 10px
-        left: 50%
-        transform: translateX(-50%)  
-        text-align: start
-        align-items: start
-
-    &__title
-        color: var(--text-color-hover)
-        font-weight: 700
-        font-size: clamp(0.8rem, 1vw, 1rem)
-        margin-bottom: 0.2rem
-        line-height: 1
-
-    &__text
-        color: rgba(255, 255, 255, 0.9)
-        font-weight: 400
-        font-size: clamp(0.9rem, 1.2vw, 1.1rem)
-        line-height: 1.3
-        max-width: 100%
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
+  &__text
+    color: rgba(255, 255, 255, 0.9)
+    font-weight: 400
+    font-size: clamp(0.8rem, 1vw, 1rem)
+    line-height: 1.3
 </style>
