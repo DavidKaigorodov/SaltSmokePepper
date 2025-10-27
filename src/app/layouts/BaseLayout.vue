@@ -77,7 +77,7 @@ export default {
     flex-direction: column
 
 .main-content > section
-  min-height: 100vh
+  min-height: calc(100vh + 60px)
   display: flex
   flex-direction: column
   justify-content: center

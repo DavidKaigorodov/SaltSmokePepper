@@ -37,7 +37,6 @@ export default {
 .about-section
   text-align: center;
   display: flex;
-  justify-content: space-evenly;
 
   .images-wrapper
     display: grid;
