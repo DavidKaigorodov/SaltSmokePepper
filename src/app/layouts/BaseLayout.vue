@@ -67,13 +67,10 @@ export default {
 </template>
 
 <style lang="sass">
-.layout
-  position: relative
-  min-height: 100vh
-  overflow: hidden
-
-  .main-content
-    display: flex
+.main-content
+  display: flex
+  flex-direction: column
+  padding: 0px 100px
 
 .main-content > section
   min-height: 100vh
