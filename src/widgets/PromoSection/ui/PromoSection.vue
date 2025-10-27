@@ -38,5 +38,5 @@ export default {
 
 .centered-button
   display: block
-  margin: 50px auto 0 auto
+  margin: 20px auto 0 auto
 </style>
