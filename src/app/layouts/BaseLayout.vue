@@ -2,7 +2,7 @@
 import Footer from "@/widgets/footer/ui/Footer.vue";
 import Header from "@/widgets/header/ui/Header.vue";
 import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+// import "locomotive-scroll/dist/locomotive-scroll.css";
 
 export default {
   components: { Header, Footer },
@@ -112,7 +112,7 @@ export default {
   justify-content: start
 
 .main-content > section:last-child
-  height: 50vh
+  height: 70vh
 
 .video-bg
   position: fixed
