@@ -17,10 +17,3 @@ export default {
     <PartnerCarousel :partners="partners" />
   </section>
 </template>
-
-<style lang="sass" scoped>
-.partners-section
-  text-align: center
-  display: flex
-  justify-content: space-evenly
-</style>
