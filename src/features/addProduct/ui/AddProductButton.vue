@@ -50,7 +50,7 @@ export default {
 <style lang="sass" scoped>
 .product-button
   width: 100%
-  height: 48px // фиксируем высоту
+  height: 48px 
   box-sizing: border-box
   background: var(--text-color-hover)
   color: var(--text-color)
