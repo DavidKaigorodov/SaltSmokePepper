@@ -1,8 +1,9 @@
 <script>
+import AddProductButton from "@/features/addProduct/ui/AddProductButton.vue";
 import ImageCard from "@/shared/ui/imageCard/ImageCard.vue";
 
 export default {
-  components: { ImageCard },
+  components: { ImageCard, AddProductButton },
   props: {
     title: String,
     price: Number,
@@ -15,22 +16,18 @@ export default {
 <template>
   <div class="product-card">
     <div class="product-card__container">
-
       <div class="product-card__image">
         <ImageCard :src="image" />
       </div>
 
-
       <div class="product-info">
-        <div class="product-info__container">
-          <div class="product-info__title">{{ title }}</div>
-
-          <div class="product-info__bottom">
-            <div class="product-info__price">{{ price }}</div>
-            <div class="product-info__weight">{{ weight }}</div>
-          </div>
+        <div class="product-info__title">{{ title }}</div>
+        <div class="product-info__bottom">
+          <div class="product-info__price">{{ price }} ₽</div>
+          <div class="product-info__weight">{{ weight }}</div>
         </div>
       </div>
+      <AddProductButton />
     </div>
   </div>
 </template>
@@ -42,6 +39,7 @@ export default {
   display: flex
   justify-content: center
   align-items: center
+  box-sizing: border-box
 
   &__container
     padding: 20px
@@ -52,47 +50,54 @@ export default {
     border-radius: 35px
     display: flex
     flex-direction: column
+    align-items: center
+    gap: 20px
     overflow: hidden
     transition: transform 0.3s ease
     &:hover
       transform: translateY(-5px)
 
   &__image
-    width: 255px
-    height: 255px
+    width: 100%
+    aspect-ratio: 4 / 3
     overflow: hidden
     border-radius: 15px
     display: flex
     justify-content: center
     align-items: center
-    margin: 0 auto
+
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      object-position: center
 
 .product-info
-  width: 255px
-  margin: 20px auto
+  width: 100%
   background: rgba(60, 60, 60, 1)
-  backdrop-filter: blur(8px)
   border-radius: 16px
-  padding: 10px
+  padding: 12px 16px
   color: var(--text-color)
-  &__container
-    display: flex
-    flex-direction: column
+  display: flex
+  flex-direction: column
+  justify-content: space-between
 
   &__title
-    font-size: 20px
+    font-size: 18px
     font-weight: 600
-    text-align: left
+    color: var(--text-color-hover)
+    margin-bottom: 8px
 
   &__bottom
     display: flex
     justify-content: space-between
     align-items: center
-    font-size: 16 px
+    font-size: 16px
 
   &__price
-    font-weight: 600
+    font-weight: 700
     color: var(--text-color)
+
   &__weight
     color: rgba(255, 255, 255, 0.6)
 </style>

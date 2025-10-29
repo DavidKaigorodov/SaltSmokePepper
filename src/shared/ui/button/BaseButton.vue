@@ -1,10 +1,9 @@
 <script>
 export default {
   props: {
-    type: {
-      type: String,
-    },
+    type: String,
     disabled: Boolean,
+    onClick: Function,
   },
 };
 </script>
@@ -14,6 +13,7 @@ export default {
     class="base-button"
     :class="[`base-button--${type}`, { 'base-button--disabled': disabled }]"
     :disabled="disabled"
+    @click="onClick"
   >
     <slot />
   </button>
@@ -31,8 +31,11 @@ export default {
   cursor: pointer
   transition: all 0.3s ease
   border: none
-  background: var(--button-background)s
-  color: var(--text-color)
+  background: var(--button-background, #2b2b2b)
+  color: var(--button-text-color, #fff)
+
+  &:hover
+    filter: brightness(1.1)
 
   &--disabled
     opacity: 0.6
