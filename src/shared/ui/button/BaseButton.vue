@@ -1,9 +1,16 @@
 <script>
 export default {
   props: {
-    type: String,
-    disabled: Boolean,
-    onClick: Function,
+    type: { type: String, default: "default" },
+    disabled: { type: Boolean, default: false },
+  },
+  emits: ["click"],
+  methods: {
+    handleClick(event) {
+      if (!this.disabled) {
+        this.$emit("click", event); 
+      }
+    },
   },
 };
 </script>
@@ -13,7 +20,7 @@ export default {
     class="base-button"
     :class="[`base-button--${type}`, { 'base-button--disabled': disabled }]"
     :disabled="disabled"
-    @click="onClick"
+    @click="handleClick"
   >
     <slot />
   </button>

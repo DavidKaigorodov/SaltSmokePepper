@@ -3,25 +3,31 @@ import BaseButton from "@/shared/ui/button/BaseButton.vue";
 
 export default {
   components: { BaseButton },
-  data() {
-    return { count: 0 };
+  props: {
+    price: Number,
+    count: { type: Number, required: true },
   },
+  emits: ["update:count"],
   computed: {
     isActive() {
       return this.count > 0;
     },
+    totalPrice() {
+      return this.price * this.count;
+    },
+    displayValue() {
+      return `${this.count} за ${this.totalPrice} ₽`;
+    },
   },
   methods: {
     handleClick() {
-      if (!this.isActive) this.count = 1;
+      if (!this.isActive) this.$emit("update:count", 1);
     },
-    increment(event) {
-      event.stopPropagation();
-      this.count++;
+    increment() {
+      this.$emit("update:count", this.count + 1);
     },
-    decrement(event) {
-      event.stopPropagation();
-      if (this.count > 0) this.count--;
+    decrement() {
+      if (this.count > 0) this.$emit("update:count", this.count - 1);
     },
   },
 };
@@ -33,15 +39,17 @@ export default {
     :class="{ 'product-button--active': isActive }"
     @click="handleClick"
   >
-    <template v-if="!isActive">Заказать</template>
+    <template v-if="!isActive">
+      <slot>Заказать</slot>
+    </template>
 
     <template v-else>
       <div class="counter">
-        <button class="counter__btn" @click="decrement">−</button>
-        <div class="counter__divider"></div>
-        <div class="counter__value">{{ count }}</div>
-        <div class="counter__divider"></div>
-        <button class="counter__btn" @click="increment">+</button>
+        <div class="counter__side counter__left" @click.stop="decrement">−</div>
+        <div class="counter__value">{{ displayValue }}</div>
+        <div class="counter__side counter__right" @click.stop="increment">
+          +
+        </div>
       </div>
     </template>
   </BaseButton>
@@ -50,7 +58,7 @@ export default {
 <style lang="sass" scoped>
 .product-button
   width: 100%
-  height: 48px 
+  height: 48px
   box-sizing: border-box
   background: var(--text-color-hover)
   color: var(--text-color)
@@ -62,6 +70,7 @@ export default {
   justify-content: center
   padding: 0 1.2rem
   transition: all 0.3s ease
+  cursor: pointer
 
   &:hover
     filter: brightness(1.1)
@@ -75,39 +84,33 @@ export default {
 .counter
   display: flex
   align-items: center
-  justify-content: center
+  justify-content: space-between
   height: 100%
   width: 100%
-  gap: 10px
+  text-align: center
 
-  &__btn
+  &__side
+    flex: 1
     display: flex
     align-items: center
     justify-content: center
-    width: 32px
-    height: 32px
-    background: transparent
-    border: none
-    color: #fff
+    cursor: pointer
     font-size: 22px
     font-weight: 700
-    cursor: pointer
-    line-height: 1
-    padding: 0
+    user-select: none
     transition: transform 0.2s ease
 
-    &:hover
-      transform: scale(1.2)
+  &__left
+    border-right: 1px solid rgba(255,255,255,0.6)
 
-  &__divider
-    width: 1px
-    height: 24px
-    background: #fff
-    opacity: 0.6
+  &__right
+    border-left: 1px solid rgba(255,255,255,0.6)
 
   &__value
-    font-size: 18px
+    flex: 2
+    font-size: 16px
     font-weight: 600
-    text-align: center
-    min-width: 100px
+    display: flex
+    align-items: center
+    justify-content: center
 </style>

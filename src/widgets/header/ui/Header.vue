@@ -2,21 +2,17 @@
 import Link from "@/shared/ui/links/Link.vue";
 import Logo from "@/shared/ui/icons/logo/Logo.vue";
 import CartIco from "@/shared/ui/icons/cartIco/CartIco.vue";
+import BaseButton from "@/shared/ui/button/BaseButton.vue";
 
 export default {
-  name: "Header",
-  components: {
-    Link,
-    Logo,
-    CartIco,
-  },
+  components: { Link, Logo, CartIco, BaseButton },
   data() {
     return {
       menu: [
         { label: "Главная", href: "/home" },
         { label: "Доставка", href: "/delivery" },
         { label: "Отзывы", href: "/reviews" },
-        { label: "Каталог", href: "/catalog" },
+        { label: "Каталог", href: "#catalog" },
         { label: "Новости и акции", href: "/news" },
         { label: "О нас", href: "/about" },
       ],
@@ -25,6 +21,16 @@ export default {
   computed: {
     cartCount() {
       return 0;
+    },
+  },
+  methods: {
+    handleMenuClick(item) {
+      if (item.href.startsWith("#")) {
+        const el = document.querySelector(item.href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        this.$router.push(item.href);
+      }
     },
   },
 };
@@ -41,9 +47,14 @@ export default {
         </div>
 
         <nav class="menu">
-          <div v-for="item in menu" :key="item.href">
-            <Link :href="item.href" :label="item.label" />
-          </div>
+          <BaseButton
+            v-for="item in menu"
+            :key="item.href"
+            class="menu-link"
+            @click="handleMenuClick(item)"
+          >
+            {{ item.label }}
+          </BaseButton>
         </nav>
       </div>
 
@@ -83,7 +94,7 @@ export default {
     align-items: center
     background: rgba(0, 0, 0, 0.3)
     backdrop-filter: blur(3px)
-    padding: 0 100px 
+    padding: 0 100px
 
     .left-menu
       display: flex
@@ -95,6 +106,17 @@ export default {
         align-items: center
         gap: 20px
 
+        .menu-link
+          background: none
+          border: none
+          color: var(--text-color)
+          font-size: 14px
+          font-weight: 500
+          cursor: pointer
+          transition: color 0.3s ease
+          &:hover
+            color: var(--text-color-hover)
+
     .right-actions
       display: flex
       align-items: center
@@ -102,7 +124,7 @@ export default {
 
       .auth-links
         display: flex
-        gap: 20px 
+        gap: 20px
 
       .cart-wrapper
         .cart-link
@@ -110,7 +132,7 @@ export default {
           align-items: center
           background: var(--text-color-hover)
           border-radius: 34px
-          padding: 4px 10px  
+          padding: 4px 10px
           gap: 8px
 
           &:hover,
@@ -118,16 +140,19 @@ export default {
             color: var(--text-color)
 
           .cart-icon
-            font-size: 18px 
+            font-size: 18px
 
           .cart-count
             display: inline-block
             background: var(--text-color)
             color: var(--text-color-dark)
             border-radius: 12px
-            min-width: 20px  
-            height: 20px  
-            line-height: 20px  
+            min-width: 20px
+            height: 20px
+            line-height: 20px
             text-align: center
-            font-size: 10px  
+            font-size: 10px
+
+#catalog
+  scroll-margin-top: 150px
 </style>

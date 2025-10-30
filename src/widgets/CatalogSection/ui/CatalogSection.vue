@@ -104,16 +104,18 @@ export default {
 </script>
 
 <template>
-  <section class="product-catalog">
+  <section class="product-catalog" id="catalog">
     <div id="catalog-top-sentinel" style="height: 1px"></div>
 
-    <h1 class="partners-title">Продукция</h1>
+    <h1 class="partners-title">Наша продукция</h1>
 
     <ProductTypeBar
       ref="typeBar"
       v-if="types.length"
       :types="types"
       :load-section="loadSection"
+      top-sentinel="#catalog-top-sentinel"
+      bottom-sentinel="#catalog-bottom-sentinel"
     />
 
     <div
@@ -129,8 +131,15 @@ export default {
           :key="product.id"
           :title="product.title"
           :price="product.price"
+          :old_price="product.old_price"
           :weight="product.weight"
           :image="product.image"
+          :description="product.description"
+          :kcal="product.kcal"
+          :proteins="product.proteins"
+          :fats="product.fats"
+          :carbs="product.carbs"
+          :badge="product.badge"
         />
       </div>
     </div>
@@ -161,9 +170,11 @@ export default {
   margin-bottom: 40px
   display: flex
   flex-direction: column
+  justify-content: center
+  align-items: center
 
 .section-title
-  font-size: 24px
+  font-size: 32px
   font-weight: 600
   margin-bottom: 20px
   text-align: center
@@ -173,7 +184,6 @@ export default {
   display: flex
   flex-wrap: wrap
   gap: 24px
-  justify-content: flex-start
   align-items: flex-start
   width: 100%
   max-width: 1600px

@@ -24,8 +24,20 @@ export default {
     async scrollToType(type) {
       if (this.loadSection) await this.loadSection(type);
       await this.$nextTick();
+
       const el = document.getElementById(`section-${type}`);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      console.log("scrollToType -> el", el);
+      if (!el) return;
+
+      const prev = el.style.scrollMarginTop;
+      el.style.scrollMarginTop = "150px";
+
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      setTimeout(() => {
+        el.style.scrollMarginTop = prev || "";
+      }, 1200);
+
       this.activeType = type;
     },
 
@@ -90,17 +102,19 @@ export default {
 <style lang="sass" scoped>
 .product-type-bar
   display: flex
+  width: 80%
+  justify-content: center
   gap: 12px
-  flex-wrap: wrap
+  flex-wrap: nowrap
   padding: 8px 12px
-  background: rgba(0, 0, 0, 0.3)
-  border-radius: 16px
-  backdrop-filter: blur(6px)
+  // background: rgba(0, 0, 0, 0.3)
+  // border-radius: 16px
+  // backdrop-filter: blur(3px)
   transition: all 0.5s ease
 
 .product-type-bar.floating
   position: fixed
-  bottom: 100px
+  top: 70px
   left: 50%
   transform: translateX(-50%)
   z-index: 999
@@ -109,9 +123,10 @@ export default {
   padding: 0.5rem 1rem
   border-radius: 12px
   border: 1px solid var(--text-color)
-  background: rgba(0, 0, 0, 0.5)
+  background: rgba(0, 0, 0, 0.6)
   color: var(--text-color)
   font-weight: 600
+  backdrop-filter: blur(3px)
   cursor: pointer
   transition: all 0.3s ease
 
@@ -119,8 +134,8 @@ export default {
     filter: brightness(1.1)
 
   &.active
-    background: var(--text-color-hover)
-    color: #fff
+    border: 1px solid var(--text-color-hover)
+    color: var(--text-color-hover)
 
 .floating-fade-enter-active,
 .floating-fade-leave-active

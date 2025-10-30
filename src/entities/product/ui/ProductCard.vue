@@ -1,21 +1,7 @@
-<script>
-import AddProductButton from "@/features/addProduct/ui/AddProductButton.vue";
-import ImageCard from "@/shared/ui/imageCard/ImageCard.vue";
-
-export default {
-  components: { ImageCard, AddProductButton },
-  props: {
-    title: String,
-    price: Number,
-    weight: String,
-    image: String,
-  },
-};
-</script>
-
 <template>
   <div class="product-card">
-    <div class="product-card__container">
+    <ProductBadge v-if="badge" :type="badge" />
+    <div class="product-card__container" @click="openModal">
       <div class="product-card__image">
         <ImageCard :src="image" />
       </div>
@@ -23,23 +9,97 @@ export default {
       <div class="product-info">
         <div class="product-info__title">{{ title }}</div>
         <div class="product-info__bottom">
-          <div class="product-info__price">{{ price }} ₽</div>
+          <div class="product-info__price">
+            <div class="product-info__old_price" v-if="old_price">
+              {{ old_price }} ₽
+            </div>
+            <span :class="{ 'new-price': old_price }">{{ price }} ₽</span>
+          </div>
           <div class="product-info__weight">{{ weight }}</div>
         </div>
       </div>
-      <AddProductButton />
+
+      <AddProductButton
+        :price="price"
+        :count="count"
+        @update:count="updateCount"
+        @click.stop
+      />
     </div>
+
+    <!-- Телепорт модалки -->
+    <ProductModal
+      :show="showModal"
+      :title="title"
+      :price="price"
+      :weight="weight"
+      :image="image"
+      :description="description"
+      :kcal="kcal"
+      :proteins="proteins"
+      :fats="fats"
+      :carbs="carbs"
+      :count="count"
+      @update:count="updateCount"
+      @close="closeModal"
+    />
   </div>
 </template>
 
+<script>
+import { ref } from "vue";
+import ImageCard from "@/shared/ui/imageCard/ImageCard.vue";
+import AddProductButton from "@/features/addProduct/ui/AddProductButton.vue";
+import ProductModal from "@/entities/product/ui/ProductModal.vue";
+import ProductBadge from "./ProductBadge.vue";
+
+export default {
+  components: { ImageCard, AddProductButton, ProductModal, ProductBadge },
+  props: {
+    title: String,
+    price: Number,
+    old_price: Number,
+    weight: String,
+    image: String,
+    description: String,
+    kcal: Number,
+    proteins: Number,
+    fats: Number,
+    carbs: Number,
+    badge: String,
+  },
+  data() {
+    return {
+      showModal: false,
+      count: 0,
+    };
+  },
+  methods: {
+    openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+    updateCount(val) {
+      this.count = val;
+    },
+  },
+};
+</script>
+
 <style lang="sass" scoped>
 .product-card
+  position: relative
   width: 300px
   height: 400px
   display: flex
   justify-content: center
   align-items: center
   box-sizing: border-box
+  transition: transform 0.3s ease
+  &:hover
+    transform: translateY(-5px)
 
   &__container
     padding: 20px
@@ -53,9 +113,6 @@ export default {
     align-items: center
     gap: 20px
     overflow: hidden
-    transition: transform 0.3s ease
-    &:hover
-      transform: translateY(-5px)
 
   &__image
     width: 100%
@@ -95,8 +152,18 @@ export default {
     font-size: 16px
 
   &__price
+    display: flex
+    align-items: center
     font-weight: 700
     color: var(--text-color)
+
+  &__old_price
+    margin-right: 8px
+    text-decoration: line-through
+    color: rgba(255,255,255,0.6)
+
+  span.new-price
+    color: var(--text-color-hover)
 
   &__weight
     color: rgba(255, 255, 255, 0.6)
