@@ -155,7 +155,7 @@ export default {
 
   .modal-body
     overflow-y: auto
-    @include scroll
+    @include scroll-card
     max-height: calc(100% - 100px)
     margin-bottom: 15px
 

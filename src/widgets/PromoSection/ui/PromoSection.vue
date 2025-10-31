@@ -49,6 +49,4 @@ export default {
   justify-content: center
   align-items: center
   width: 250px
-  height: 50px
-  margin: 30px auto 0
 </style>
