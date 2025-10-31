@@ -14,16 +14,19 @@ W
 
 <style lang="sass" scoped>
 .promo-button
+    flex: 0 0 50px      
+    height: 250px
     backdrop-filter: blur(10px)
-    height: 50px
-    width: 250px
-    background: rgba(0, 0, 0, 0.1)
+    background: rgba(0, 0, 0, 0.2)
     border: 1px solid var(--text-color)
     border-radius: 20px
     color: var(--text-color)
     padding: 5px 10px
     font-size: 1.2rem
     font-weight: 600
+    display: inline-flex     
+    justify-content: center
+    align-items: center
 
     &:hover
         transform: scale(1.02)

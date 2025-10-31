@@ -28,7 +28,7 @@ export default {
   max-width: calc(100% - 40px)
   margin: 0 20px 20px 20px
   backdrop-filter: blur(8px)
-  background: rgba(0, 0, 0, 0.45)
+  background: rgba(0, 0, 0, 0.6)
   padding: 10px
   border-radius: 16px
   border: 1px solid rgba(255, 255, 255, 0.2)

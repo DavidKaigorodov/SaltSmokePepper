@@ -21,7 +21,7 @@ export default {
       />
     </div>
     <PromoButton class="centered-button">
-      Все новости и
+      Все новости и&nbsp;
       <span class="highlight">акции</span>
     </PromoButton>
   </section>
@@ -37,6 +37,7 @@ export default {
   padding: 16px
 
 .centered-button
-  display: block
-  margin: 40px auto 0 auto
+  // display: block
+  width: 250px
+  height: 50px
 </style>

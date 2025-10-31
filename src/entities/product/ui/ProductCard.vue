@@ -1,53 +1,4 @@
-<template>
-  <div class="product-card">
-    <ProductBadge v-if="badge" :type="badge" />
-    <div class="product-card__container" @click="openModal">
-      <div class="product-card__image">
-        <ImageCard :src="image" />
-      </div>
-
-      <div class="product-info">
-        <div class="product-info__title">{{ title }}</div>
-        <div class="product-info__bottom">
-          <div class="product-info__price">
-            <div class="product-info__old_price" v-if="old_price">
-              {{ old_price }} ₽
-            </div>
-            <span :class="{ 'new-price': old_price }">{{ price }} ₽</span>
-          </div>
-          <div class="product-info__weight">{{ weight }}</div>
-        </div>
-      </div>
-
-      <AddProductButton
-        :price="price"
-        :count="count"
-        @update:count="updateCount"
-        @click.stop
-      />
-    </div>
-
-    <!-- Телепорт модалки -->
-    <ProductModal
-      :show="showModal"
-      :title="title"
-      :price="price"
-      :weight="weight"
-      :image="image"
-      :description="description"
-      :kcal="kcal"
-      :proteins="proteins"
-      :fats="fats"
-      :carbs="carbs"
-      :count="count"
-      @update:count="updateCount"
-      @close="closeModal"
-    />
-  </div>
-</template>
-
 <script>
-import { ref } from "vue";
 import ImageCard from "@/shared/ui/imageCard/ImageCard.vue";
 import AddProductButton from "@/features/addProduct/ui/AddProductButton.vue";
 import ProductModal from "@/entities/product/ui/ProductModal.vue";
@@ -87,6 +38,53 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="product-card">
+    <ProductBadge v-if="badge" :type="badge" />
+    <div class="product-card__container" @click="openModal">
+      <div class="product-card__image">
+        <ImageCard :src="image" />
+      </div>
+
+      <div class="product-info">
+        <div class="product-info__title">{{ title }}</div>
+        <div class="product-info__bottom">
+          <div class="product-info__price">
+            <div class="product-info__old_price" v-if="old_price">
+              {{ old_price }} ₽
+            </div>
+            <span :class="{ 'new-price': old_price }">{{ price }} ₽</span>
+          </div>
+          <div class="product-info__weight">{{ weight }}</div>
+        </div>
+      </div>
+
+      <AddProductButton
+        :price="price"
+        :count="count"
+        @update:count="updateCount"
+        @click.stop
+      />
+    </div>
+
+    <ProductModal
+      :show="showModal"
+      :title="title"
+      :price="price"
+      :weight="weight"
+      :image="image"
+      :description="description"
+      :kcal="kcal"
+      :proteins="proteins"
+      :fats="fats"
+      :carbs="carbs"
+      :count="count"
+      @update:count="updateCount"
+      @close="closeModal"
+    />
+  </div>
+</template>
 
 <style lang="sass" scoped>
 .product-card

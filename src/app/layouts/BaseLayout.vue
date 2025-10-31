@@ -1,87 +1,65 @@
 <script>
 import Footer from "@/widgets/footer/ui/Footer.vue";
 import Header from "@/widgets/header/ui/Header.vue";
-import LocomotiveScroll from "locomotive-scroll";
-// import "locomotive-scroll/dist/locomotive-scroll.css";
 
 export default {
   components: { Header, Footer },
   props: { name: String },
-  // mounted() {
-  //   const container = this.$refs.scrollContainer;
-
-  //   this.scroll = new LocomotiveScroll({
-  //     el: container,
-  //     smooth: true,
-  //     inertia: 0.9,
-  //     multiplier: 1.1,
-  //     smartphone: { smooth: true },
-  //     tablet: { smooth: true },
-  //   });
-
-  //   const sections = Array.from(container.querySelectorAll("section"));
-
-  //   let timeout = null;
-  //   let isSnapping = false;
-
-  //   const onScrollHandler = (obj) => {
-  //     if (isSnapping) return;
-  //     if (timeout) clearTimeout(timeout);
-
-  //     timeout = setTimeout(() => {
-  //       const scrollY = obj.scroll.y;
-  //       const viewportTop = scrollY;
-
-  //       let closestSection = null;
-  //       let minDistance = Infinity;
-
-  //       for (const section of sections) {
-  //         const rect = section.getBoundingClientRect();
-  //         const sectionTop = rect.top + scrollY;
-  //         const distance = Math.abs(viewportTop - sectionTop);
-
-  //         if (distance < minDistance) {
-  //           minDistance = distance;
-  //           closestSection = section;
-  //         }
-  //       }
-
-  //       if (!closestSection || minDistance < 1) return;
-
-  //       isSnapping = true;
-
-  //       this.scroll.scrollTo(closestSection, {
-  //         offset: 0,
-  //         duration: 600,
-  //         easing: [0.25, 0.0, 0.35, 1.0],
-  //         callback: () => {
-  //           isSnapping = false;
-  //         },
-  //       });
-  //     }, 300);
-  //   };
-
-  //   this.scroll.on("scroll", onScrollHandler);
-  // },
-  // beforeUnmount() {
-  //   if (this.scroll) this.scroll.destroy();
-  // },
+  data() {
+    return {
+      showScrollTop: false,
+      appEl: null,
+    };
+  },
+  mounted() {
+    this.appEl = document.querySelector("#app");
+    if (this.appEl) {
+      this.appEl.addEventListener("scroll", this.handleScroll, { passive: true });
+      this.handleScroll();
+    }
+  },
+  beforeUnmount() {
+    if (this.appEl) this.appEl.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    scrollToTop() {
+      if (this.appEl) {
+        this.appEl.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    },
+    handleScroll() {
+      if (!this.appEl) return;
+      const scrollY = this.appEl.scrollTop;
+      this.showScrollTop = scrollY > 150;
+    },
+  },
 };
 </script>
 
 <template>
   <div :class="['layout', name]">
     <Header />
-    <div >
-      <main class="main-content" >
-        <slot />
-      </main>
-    </div>
+
+    <main class="main-content">
+      <slot />
+    </main>
+
     <Footer />
 
     <video autoplay muted loop playsinline class="video-bg">
       <source src="@/app/assets/bg-video.webm" type="video/webm" />
     </video>
+
+    <transition name="fade">
+      <button
+        v-if="showScrollTop"
+        class="scroll-btn up"
+        title="Наверх"
+        @click="scrollToTop"
+      >
+        ↑
+      </button>
+    </transition>
   </div>
 </template>
 
@@ -90,12 +68,14 @@ export default {
   display: flex
   flex-direction: column
   min-height: 100vh
+  overflow-x: hidden
 
 .main-content
   display: flex
   flex-direction: column
   padding: 0 100px
   justify-content: space-evenly
+  scroll-behavior: smooth
 
 .main-content > section
   height: 100vh
@@ -105,7 +85,6 @@ export default {
   align-items: center
   position: relative
   transition: transform 0.4s ease
-  justify-content: space-evenly
 
 .main-content > section:first-child
   padding: 100px 0
@@ -122,4 +101,33 @@ export default {
   height: 100%
   object-fit: cover
   z-index: -10
+
+.scroll-btn
+  position: fixed
+  bottom: 40px
+  right: 40px
+  width: 48px
+  height: 48px
+  border: none
+  border-radius: 50%
+  background: rgba(255, 255, 255, 0.25)
+  color: white
+  font-size: 22px
+  font-weight: 700
+  cursor: pointer
+  backdrop-filter: blur(8px)
+  transition: all 0.3s ease
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3)
+  z-index: 1000
+
+  &:hover
+    background: rgba(255, 255, 255, 0.45)
+    transform: scale(1.1)
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity 0.4s ease, transform 0.4s ease
+
+.fade-enter-from, .fade-leave-to
+  opacity: 0
+  transform: translateY(10px)
 </style>
