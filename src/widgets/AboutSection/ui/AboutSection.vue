@@ -11,11 +11,11 @@ export default {
 
 <template>
   <section class="about-section">
-    <h1 class="about-title">
+    <h2 class="about-title">
       <span class="highlight">Ничего лишнего</span>, никаких консервантов
       <br />
       Только <span class="highlight">МЯСО</span>
-    </h1>
+    </h2>
 
     <div class="images-wrapper">
       <AboutCard v-for="about in abouts" :key="about.id" v-bind="about" />
@@ -43,7 +43,7 @@ export default {
   gap: 4vw
 
 .about-title
-  font-size: clamp(1.6rem, 4vw, 2.2rem)
+  font-size: 2rem
   line-height: 1.3
   font-weight: 700
   margin: 0
@@ -54,7 +54,7 @@ export default {
   width: 100%
 
 .description
-  font-size: clamp(1rem, 2vw, 1.25rem)
+  font-size: 1rem
   line-height: 1.7
 
   margin: 0 auto

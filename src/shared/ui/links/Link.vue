@@ -24,6 +24,7 @@ export default {
     all: unset
     color: var(--text-color)
     text-decoration: none
+    font-size: 1.1rem
     cursor: pointer
     display: inline-block
 

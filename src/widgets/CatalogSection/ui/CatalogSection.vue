@@ -107,7 +107,7 @@ export default {
   <section class="product-catalog" id="catalog">
     <div id="catalog-top-sentinel" style="height: 1px"></div>
 
-    <h1 class="partners-title">Каталог</h1>
+    <h2 class="partners-title">Каталог</h2>
 
     <ProductTypeBar
       ref="typeBar"
@@ -160,7 +160,7 @@ export default {
   align-items: center
 
 .partners-title
-  font-size: 32px
+  font-size: 2rem
   font-weight: 700
   margin-bottom: 20px
   text-align: center
@@ -175,7 +175,7 @@ export default {
   align-items: flex-start
 
 .section-title
-  font-size: 32px
+  font-size: 1.5rem
   font-weight: 600
   padding-left: 40px
   margin-bottom: 20px

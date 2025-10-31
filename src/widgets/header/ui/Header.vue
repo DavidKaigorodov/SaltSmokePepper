@@ -84,7 +84,6 @@ export default {
   height: 60px
   width: 100%
   z-index: 888
-  box-sizing: border-box
 
   .container
     display: flex
@@ -93,12 +92,12 @@ export default {
     align-items: center
     background: rgba(0, 0, 0, 0.5)
     backdrop-filter: blur(8px)
-    padding: 0 clamp(20px, 6vw, 100px)
+    padding: 0 100px
 
     .left-menu
       display: flex
       align-items: center
-      gap: clamp(10px, 3vw, 50px) 
+      gap: clamp(10px, 3vw, 50px)
 
       .menu
         display: flex
@@ -111,7 +110,7 @@ export default {
           background: none
           border: none
           color: var(--text-color)
-          font-size: clamp(12px, 1vw, 15px)
+          font-size: 1rem
           font-weight: 500
           cursor: pointer
           transition: color 0.3s ease
@@ -127,11 +126,12 @@ export default {
 
       .auth-links
         display: flex
+
         align-items: center
         gap: clamp(10px, 2vw, 30px)
 
         .auth-link
-          font-size: clamp(12px, 1vw, 15px)
+          font-size: 1rem
           color: var(--text-color)
           transition: color 0.3s ease
 

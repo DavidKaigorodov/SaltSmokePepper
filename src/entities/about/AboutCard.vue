@@ -44,7 +44,7 @@ export default {
 
   .about-card__label
     font-weight: 600
-    font-size: clamp(0.9rem, 1.6vw, 1.25rem)
+    font-size: 1rem
     margin: 0
 
 </style>
