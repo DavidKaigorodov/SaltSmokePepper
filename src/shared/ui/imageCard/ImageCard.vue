@@ -20,16 +20,13 @@ export default {
   width: 100%
   height: 100%
   border-radius: 12px
-  overflow: hidden
-  display: flex
-  justify-content: center
-  align-items: flex-end
-  z-index: 1
+  // overflow: hidden
+  // display: flex
+  // align-items: flex-end
+  // z-index: 1
 
+  // justify-content: center
   &__image
-    position: absolute
-    top: 0
-    left: 0
     width: 100%
     height: 100%
     object-fit: cover
