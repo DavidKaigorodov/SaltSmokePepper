@@ -87,19 +87,18 @@ export default {
   min-height: 100vh
   display: flex
   flex-direction: column
-  justify-content: center
+  justify-content: space-evenly
   align-items: center
   position: relative
   transition: transform 0.4s ease
-  // padding-top: 150px
-  box-sizing: border-box
 
 .main-content > section:first-child
-  justify-content: center
+  padding-top: 80px
+
 
 .main-content > section:last-child
   min-height: 70vh
-  justify-content: space-evenly
+  
 
 .video-bg
   position: fixed

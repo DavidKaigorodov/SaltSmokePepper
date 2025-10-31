@@ -94,18 +94,15 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-  box-sizing: border-box
-  transition: transform 0.3s ease
-  &:hover
-    transform: translateY(-5px)
+  cursor: pointer
 
   &__container
     padding: 20px
     width: 100%
     height: 100%
-    background: rgba(0, 0, 0, 0.5)
+    background: rgba(0, 0, 0, 0.2)
     backdrop-filter: blur(8px)
-    border-radius: 35px
+    border-radius: 30px
     display: flex
     flex-direction: column
     align-items: center
@@ -138,7 +135,7 @@ export default {
   justify-content: space-between
 
   &__title
-    font-size: 18px
+    font-size: 1.1rem
     font-weight: 600
     color: var(--text-color-hover)
     margin-bottom: 8px
@@ -151,12 +148,14 @@ export default {
 
   &__price
     display: flex
+    font-size: 1rem
     align-items: center
     font-weight: 700
     color: var(--text-color)
 
   &__old_price
     margin-right: 8px
+    font-size: 1rem
     text-decoration: line-through
     color: rgba(255,255,255,0.6)
 
@@ -164,5 +163,6 @@ export default {
     color: var(--text-color-hover)
 
   &__weight
+    font-size: 1rem
     color: rgba(255, 255, 255, 0.6)
 </style>

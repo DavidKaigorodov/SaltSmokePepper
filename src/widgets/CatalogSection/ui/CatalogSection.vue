@@ -171,23 +171,23 @@ export default {
   margin-bottom: 40px
   display: flex
   flex-direction: column
-  justify-content: flex-start
-  align-items: flex-start
+  justify-content: center
+  align-items: center
 
 .section-title
   font-size: 1.5rem
   font-weight: 600
-  padding-left: 40px
   margin-bottom: 20px
-  text-align: flex-start
+  text-align: center
   color: var(--text-color)
 
 .product-catalog__list
-  display: flex
-  flex-wrap: wrap
-  gap: 24px
-  align-items: flex-start
-  justify-content: flex-start 
+  display: grid
+  gap: 20px
   width: 100%
-  box-sizing: border-box
+  justify-content: center
+  grid-template-columns: repeat(auto-fill, 300px)
+
+  & > *
+    justify-self: center
 </style>

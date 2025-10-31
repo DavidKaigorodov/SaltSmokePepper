@@ -21,6 +21,8 @@ export default {
 <style lang="sass" scoped>
 .info-card
   position: absolute
+  width: 100%
+  height: auto
   bottom: 0
   left: 0
   right: 0
@@ -29,7 +31,6 @@ export default {
   backdrop-filter: blur(8px)
   background: rgba(0, 0, 0, 0.6)
   padding: 10px 14px
-  border-radius: 0 0 12px 12px
   color: var(--text-color)
   z-index: 3
   opacity: 0.95
@@ -38,12 +39,12 @@ export default {
   &__title
     color: var(--text-color-hover)
     font-weight: 700
-    font-size: clamp(0.9rem, 1.1vw, 1.2rem)
+    font-size: 1.2rem
     margin-bottom: 0.25rem
 
   &__text
-    color: rgba(255, 255, 255, 0.9)
-    font-size: clamp(0.8rem, 1vw, 1rem)
+    color: var(--text-color)
+    font-size: 1rem
 
   .promo-card:hover &
     opacity: 1
