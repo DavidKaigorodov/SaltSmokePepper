@@ -14,7 +14,9 @@ export default {
   mounted() {
     this.appEl = document.querySelector("#app");
     if (this.appEl) {
-      this.appEl.addEventListener("scroll", this.handleScroll, { passive: true });
+      this.appEl.addEventListener("scroll", this.handleScroll, {
+        passive: true,
+      });
       this.handleScroll();
     }
   },
@@ -69,29 +71,35 @@ export default {
   flex-direction: column
   min-height: 100vh
   overflow-x: hidden
+  position: relative
 
 .main-content
   display: flex
   flex-direction: column
-  padding: 0 100px
   justify-content: space-evenly
+  padding: 0 100px
   scroll-behavior: smooth
+  flex-grow: 1
+  box-sizing: border-box
+
 
 .main-content > section
-  height: 100vh
+  min-height: 100vh
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
   position: relative
   transition: transform 0.4s ease
+  // padding-top: 150px
+  box-sizing: border-box
 
 .main-content > section:first-child
-  padding: 100px 0
-  justify-content: start
+  justify-content: center
 
 .main-content > section:last-child
-  height: 70vh
+  min-height: 70vh
+  justify-content: space-evenly
 
 .video-bg
   position: fixed

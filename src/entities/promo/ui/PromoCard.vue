@@ -28,20 +28,13 @@ export default {
 .promo-card
   position: relative
   width: 100%
-  height: 100%
-  cursor: pointer
-  transition: transform 0.3s ease
-  border-radius: 12px
   overflow: hidden
+  border-radius: 20px
+  transition: transform 0.4s ease, box-shadow 0.4s ease
+  cursor: pointer
 
   &:hover
-    transform: scale(1.02)
+    transform: scale(1.015)
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25)
 
-  &--large
-    grid-column: span 2
-    grid-row: span 2
-
-  &--small
-    grid-column: span 1
-    grid-row: span 1
 </style>

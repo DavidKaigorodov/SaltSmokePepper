@@ -1,6 +1,6 @@
 <script setup/>
 <template>
-    <img class="logo" src="../../../../app/assets/SSP_Vector.svg" alt="Logo">
+    <img class="logo" src="../../../../app/assets/SSP_Vector.svg" alt="Logo" loading="lazy">
 </template>
 <style lang="sass">
 .logo

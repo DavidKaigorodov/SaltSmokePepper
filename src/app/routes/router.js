@@ -9,8 +9,8 @@ const HomePage = () => import('@/pages/home/ui/homePage.vue')
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { 
-      path: '/home', 
+     { 
+      path: '/', 
       name: 'home', 
       component: HomePage 
     },

@@ -107,7 +107,7 @@ export default {
   <section class="product-catalog" id="catalog">
     <div id="catalog-top-sentinel" style="height: 1px"></div>
 
-    <h1 class="partners-title">Наша продукция</h1>
+    <h1 class="partners-title">Каталог</h1>
 
     <ProductTypeBar
       ref="typeBar"
@@ -155,6 +155,7 @@ export default {
   width: 100%
   height: auto
   display: flex
+  justify-content: space-evenly
   flex-direction: column
   align-items: center
 
@@ -170,14 +171,15 @@ export default {
   margin-bottom: 40px
   display: flex
   flex-direction: column
-  justify-content: center
-  align-items: center
+  justify-content: flex-start
+  align-items: flex-start
 
 .section-title
   font-size: 32px
   font-weight: 600
+  padding-left: 40px
   margin-bottom: 20px
-  text-align: center
+  text-align: flex-start
   color: var(--text-color)
 
 .product-catalog__list
@@ -185,7 +187,7 @@ export default {
   flex-wrap: wrap
   gap: 24px
   align-items: flex-start
+  justify-content: flex-start 
   width: 100%
-  max-width: 1600px
   box-sizing: border-box
 </style>

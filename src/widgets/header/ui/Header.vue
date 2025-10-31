@@ -83,8 +83,7 @@ export default {
   left: 0
   height: 60px
   width: 100%
-  z-index: 100
-  padding-right: 17px
+  z-index: 888
   box-sizing: border-box
 
   .container
@@ -92,39 +91,52 @@ export default {
     height: 100%
     justify-content: space-between
     align-items: center
-    background: rgba(0, 0, 0, 0.3)
-    backdrop-filter: blur(3px)
-    padding: 0 100px
+    background: rgba(0, 0, 0, 0.5)
+    backdrop-filter: blur(8px)
+    padding: 0 clamp(20px, 6vw, 100px)
 
     .left-menu
       display: flex
       align-items: center
-      gap: 20px
+      gap: clamp(10px, 3vw, 50px) 
 
       .menu
         display: flex
         align-items: center
-        gap: 20px
+        flex-wrap: wrap
+        gap: clamp(5px, 2vw, 40px)
+        padding-left: 0
 
         .menu-link
           background: none
           border: none
           color: var(--text-color)
-          font-size: 14px
+          font-size: clamp(12px, 1vw, 15px)
           font-weight: 500
           cursor: pointer
           transition: color 0.3s ease
+          white-space: nowrap
+
           &:hover
             color: var(--text-color-hover)
 
     .right-actions
       display: flex
       align-items: center
-      gap: 20px
+      gap: clamp(10px, 2.5vw, 40px)
 
       .auth-links
         display: flex
-        gap: 20px
+        align-items: center
+        gap: clamp(10px, 2vw, 30px)
+
+        .auth-link
+          font-size: clamp(12px, 1vw, 15px)
+          color: var(--text-color)
+          transition: color 0.3s ease
+
+          &:hover
+            color: var(--text-color-hover)
 
       .cart-wrapper
         .cart-link
@@ -133,14 +145,14 @@ export default {
           background: var(--text-color-hover)
           border-radius: 34px
           padding: 4px 10px
-          gap: 8px
+          gap: clamp(5px, 1vw, 10px)
 
           &:hover,
           &:focus
             color: var(--text-color)
 
           .cart-icon
-            font-size: 18px
+            font-size: clamp(16px, 1.2vw, 20px)
 
           .cart-count
             display: inline-block

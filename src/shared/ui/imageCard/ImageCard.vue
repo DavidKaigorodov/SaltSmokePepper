@@ -9,7 +9,7 @@ export default {
 
 <template>
   <div class="image-card">
-    <img :src="src" :alt="alt" class="image-card__image" />
+    <img :src="src" :alt="alt" class="image-card__image" loading="lazy"/>
     <slot />
   </div>
 </template>
@@ -19,18 +19,18 @@ export default {
   position: relative
   width: 100%
   height: 100%
-  border-radius: 12px
-  // overflow: hidden
-  // display: flex
-  // align-items: flex-end
-  // z-index: 1
+  overflow: hidden
+  border-radius: inherit
 
-  // justify-content: center
   &__image
     width: 100%
     height: 100%
     object-fit: cover
     object-position: center
+    display: block
+    transition: transform 0.6s ease
+    will-change: transform
+
+  &:hover .image-card__image
     transform: scale(1.05)
-    z-index: 0
 </style>

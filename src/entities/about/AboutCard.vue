@@ -24,28 +24,27 @@ export default {
   flex-direction: column
   align-items: center
   text-align: center
+  gap: 1vw
 
   .about-card__image
-    width: 320px
-    height: 320px
+    width: clamp(160px, 25vw, 320px)
+    height: clamp(160px, 25vw, 320px)
     border-radius: 50%
     overflow: hidden
     position: relative
     transition: transform 0.3s ease
-    margin-bottom: 12px
 
     &:hover
-      transform: scale(1.02)
+      transform: scale(1.04)
 
     .image-card__image
       width: 100%
       height: 100%
       object-fit: cover
-      border-radius: 50%
 
   .about-card__label
     font-weight: 600
-    font-size: 20px
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem)
     margin: 0
-    text-align: center
+
 </style>

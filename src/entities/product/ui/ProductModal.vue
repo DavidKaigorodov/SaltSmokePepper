@@ -48,7 +48,7 @@ export default {
         <transition name="scale">
           <div class="modal-content">
             <div class="modal-left">
-              <img :src="image" alt="product image" />
+              <img :src="image" alt="product image"  loading="lazy"/>
             </div>
             <div class="modal-right">
               <button class="close-btn" @click="closeModal">×</button>

@@ -31,7 +31,7 @@ export default {
   display: inline-flex
   align-items: center
   justify-content: center
-  padding: 0.6rem 1.2rem
+  // padding: 0.6rem 1.2rem
   border-radius: 12px
   font-weight: 600
   font-size: 1rem

@@ -412,7 +412,7 @@ export const products = [
     price: 420,
     weight: "220 гр",
     image: new URL(
-      "@/app/assets/images/promoImages/brisket.jpg",
+      "@/app/assets/images/promoImages/about.jpg",
       import.meta.url
     ).href,
     description:

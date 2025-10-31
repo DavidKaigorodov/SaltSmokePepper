@@ -28,16 +28,27 @@ export default {
 </template>
 
 <style lang="sass" scoped>
+.promo-section
+  width: 100%
+
 .promo-grid
   display: grid
   grid-template-columns: repeat(4, 1fr)
-  grid-auto-rows: 320px
-  gap: 16px
+  grid-template-rows: repeat(2, 1fr)
+  grid-template-areas: 'A A B C' 'A A D E'
+
+  gap: 14px
   width: 100%
-  padding: 16px
+  height: calc((100vw - 200px) / 7 * 3)
+
+  .promo-card--large
+    grid-area: A
 
 .centered-button
-  // display: block
+  display: flex
+  justify-content: center
+  align-items: center
   width: 250px
   height: 50px
+  margin: 30px auto 0
 </style>
