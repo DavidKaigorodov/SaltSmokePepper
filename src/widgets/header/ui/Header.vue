@@ -97,13 +97,13 @@ export default {
     .left-menu
       display: flex
       align-items: center
-      gap: clamp(10px, 3vw, 50px)
+      gap: clamp(5px, 1vw, 30px)
 
       .menu
         display: flex
         align-items: center
         flex-wrap: wrap
-        gap: clamp(5px, 2vw, 40px)
+        gap: clamp(5px, 1vw, 30px)
         padding-left: 0
 
         .menu-link
@@ -122,13 +122,13 @@ export default {
     .right-actions
       display: flex
       align-items: center
-      gap: clamp(10px, 2.5vw, 40px)
+      gap: clamp(5px, 1vw, 30px)
 
       .auth-links
         display: flex
 
         align-items: center
-        gap: clamp(10px, 2vw, 30px)
+        gap: clamp(5px, 1vw, 30px)
 
         .auth-link
           font-size: 1rem
@@ -151,9 +151,6 @@ export default {
           &:focus
             color: var(--text-color)
 
-          .cart-icon
-            font-size: clamp(16px, 1.2vw, 20px)
-
           .cart-count
             display: inline-block
             background: var(--text-color)
@@ -163,7 +160,7 @@ export default {
             height: 20px
             line-height: 20px
             text-align: center
-            font-size: 10px
+            font-size: 12px
 
 #catalog
   scroll-margin-top: 150px
