@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       menu: [
-        { label: "Главная", href: "/home" },
+        { label: "Главная", href: "/" },
         { label: "Доставка", href: "/delivery" },
         { label: "Отзывы", href: "/reviews" },
         { label: "Каталог", href: "#catalog" },
@@ -41,7 +41,7 @@ export default {
     <div class="container">
       <div class="left-menu">
         <div class="header_logo">
-          <Link href="/home">
+          <Link href="/">
             <Logo />
           </Link>
         </div>
