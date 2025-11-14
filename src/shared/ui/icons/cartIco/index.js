@@ -1,1 +1,0 @@
-export {default as CartIco} from "./CartIco.vue"

@@ -1,1 +1,0 @@
-export {default as EnvelopeIco} from './EnvelopeIco.vue'
