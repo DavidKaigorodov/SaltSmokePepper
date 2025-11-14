@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      axios.post("http://127.0.0.1:8000/register", {
+      this.$axios.post("/api/register", {
         email: this.email,
         password: this.password,
         password_confirmation: this.password_confirmation,
