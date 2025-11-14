@@ -1,0 +1,1 @@
+export { default as CheckIco } from './CheckIco.vue'
