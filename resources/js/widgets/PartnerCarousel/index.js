@@ -1,0 +1,1 @@
+export {default as PartnerCarousel} from './ui/PartnerCarousel.vue'

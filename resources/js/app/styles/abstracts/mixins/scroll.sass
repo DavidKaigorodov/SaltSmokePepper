@@ -1,0 +1,15 @@
+@mixin scroll()
+  /* IE и Edge (старые) */
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+    -ms-overflow-style: none
+
+  /* Chrome, Safari, Opera */
+  @media screen and (-webkit-min-device-pixel-ratio: 0)
+    &::-webkit-scrollbar
+      width: 0
+      height: 0
+      display: none
+
+  /* Firefox */
+  @-moz-document url-prefix()
+    scrollbar-width: none
